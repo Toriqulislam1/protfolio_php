@@ -1,3 +1,28 @@
+
+ <?php
+
+ require 'db.php';
+
+ $id = $_GET['id'];
+
+ $select = "SELECT * FROM works where id = $id";
+
+ $res_work = mysqli_query($db_connection,$select);
+ $after_assoc = mysqli_fetch_assoc($res_work);
+
+ //user queary
+
+ $user_id = $after_assoc['user_id'];
+ 
+ $selete_user = "SELECT * FROM users where id = $user_id";
+ $user_res = mysqli_query($db_connection,$selete_user);
+ 
+ $user_after_assoc = mysqli_fetch_assoc($user_res);
+
+?>
+
+
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -135,43 +160,12 @@
                         <div class="col-xl-9 col-lg-10">
                             <div class="single-blog-list">
                                 <div class="blog-list-thumb mb-35">
-                                    <img src="img/images/portfolio_details.jpg" alt="img">
+                                    <img src="upload/works/<?= $after_assoc['image']?>" alt="img">
                                 </div>
                                 <div class="blog-list-content blog-details-content portfolio-details-content">
                                     <h2>Consectetur neque elit quis nunc cras elementum</h2>
-                                    <p>Express dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem
-                                        egestliberos dolor auctor
-                                        tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur,
-                                        trist ligula pellentesque
-                                        ipsum. Quisque thsr augue ipsum, vehicula tellus maximus. Was popularised in the 1960s withs
-                                        the release of Letraset
-                                        sheets containing Lorem Ipsum passags, and more recently with desktop publishing software
-                                        like Aldus PageMaker including
-                                        versions.</p>
-                                    <p>Rxpress dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem
-                                        egestlibers dolosr auctor
-                                        tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur,
-                                        trist ligula pellentesque
-                                        ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.</p>
-                                    <p>Vehicula dolor amet consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem egestliberos dolor auctor
-                                    tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur, trist ligula pellentesque
-                                    ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.Express dolor sit amet, consectetur adipiscing elit. Cras
-                                    sollicitudin, tellus vitae condimem egestliberos dolor auctor tellus, eu consectetur neque elit quis nunc.</p>
-
-                                    <p>Express dolor sit amet, consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem
-                                        egestliberos dolor auctor
-                                        tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur,
-                                        trist ligula pellentesque
-                                        ipsum. Quisque thsr augue ipsum, vehicula tellus maximus. Was popularised in the 1960s withs
-                                        the release of Letraset
-                                        sheets containing Lorem Ipsum passags, and more recently with desktop publishing software
-                                        like Aldus PageMaker including
-                                        versions.</p>
-                                    <p>Vehicula dolor amet consectetur adipiscing elit. Cras sollicitudin, tellus vitae condimem
-                                        egestliberos dolor auctor
-                                        tellus, eu consectetur neque elit quis nunc. Cras elementum pretiumi Nullam justo efficitur,
-                                        trist ligula pellentesque
-                                        ipsum. Quisque thsr augue ipsum, vehicula tellus maximus.</p>
+                                    
+                                    <p><?= $after_assoc['desp']?></p>
                                     <div class="blog-list-meta">
                                         <ul>
                                             <li class="blog-post-date">
@@ -189,10 +183,10 @@
                                     <ul>
                                         <li>
                                             <div class="post-avatar-img">
-                                                <img src="img/blog/post_avatar_img.png" alt="img">
+                                                <img width="150px" src="upload/user/<?=$user_after_assoc['image']?>" alt="img">
                                             </div>
                                             <div class="post-avatar-content">
-                                                <h5>Thomas Herlihy</h5>
+                                                <h5><?=$user_after_assoc['name']?></h5>
                                                 <p>Vehicula dolor amet consectetur adipiscing elit. Cras sollicitudin, tellus vitae
                                                     condimem
                                                     egestliberos dolor auctor
@@ -223,7 +217,7 @@
                     <div class="row align-items-center">
                         <div class="col-12">
                             <div class="copyright-text text-center">
-                                <p>Copyright© <span>Kufa</span> | All Rights Reserved</p>
+                                <p>Copyright© <span>toriqul</span> | All Rights Reserved</p>
                             </div>
                         </div>
                     </div>

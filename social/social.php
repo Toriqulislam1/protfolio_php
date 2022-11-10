@@ -31,7 +31,7 @@
                                 <a href="icon_status.php?id=<?=$icon['id']?>"><span class="badge text-bg-<?=($icon['status']==1?'success':'secondary')?>"><?=($icon['status']==1?'Active':'Deactive')?></span></a>
                             </td>
                             <td>
-                                <a href="" class="btn btn-danger">Del</a>
+                                <a href="social_del.php?id=<?=$icon['id']?>" class="btn btn-danger">Del</a>
                             </td>
                         </tr>
                         <?php } ?>

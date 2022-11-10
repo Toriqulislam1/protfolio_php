@@ -1,6 +1,7 @@
 
 
 <?php
+session_start();
 //logos
 require 'db.php';
 
@@ -30,8 +31,13 @@ $select = "SELECT * FROM educations WHERE status=1";
 $select_edu = mysqli_query($db_connection, $select);
 
 //Education
-// $select = "SELECT * FROM works";
-// $select_work = mysqli_query($db_connection, $select);
+$select = "SELECT * FROM works";
+$select_work = mysqli_query($db_connection, $select);
+
+//brand
+$select = "SELECT * FROM brand";
+$select_brand = mysqli_query($db_connection, $select);
+
 
 ?>
 
@@ -66,10 +72,11 @@ $select_edu = mysqli_query($db_connection, $select);
         <link rel="stylesheet" href="css/default.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
+        <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     </head>
     <body class="theme-bg">
-
-        <!-- preloader -->
         <div id="preloader">
             <div id="loading-center">
                 <div id="loading-center-absolute">
@@ -133,22 +140,23 @@ $select_edu = mysqli_query($db_connection, $select);
                 <div class="side-info mb-30">
                     <div class="contact-list mb-30">
                         <h4>Office Address</h4>
-                        <p>123/A, Miranda City Likaoli
-                            Prikano, Dope</p>
+                        <p>Dhaka</p>
                     </div>
                     <div class="contact-list mb-30">
                         <h4>Phone Number</h4>
-                        <p>+0989 7876 9865 9</p>
+                        <p>+8801727204284</p>
                     </div>
                     <div class="contact-list mb-30">
                         <h4>Email Address</h4>
-                        <p>info@example.com</p>
+                        <p>toriqulislam2720@gmail.com</p>
                     </div>
                 </div>
                 
                 <div class="social-icon-right mt-20">
                     <?php foreach($select_icon as $icon){ ?>
-                        <a target="_blank" href="<?=$icon['link']?>"><i style="font-family:fontawesome;" class="fa <?=$icon['icon']?>"></i></a>
+                        <a target="_blank" href="<?=$icon['link']?>">
+                        <i style="font-family:fontawesome;" 
+                        class="fa <?=$icon['icon']?>"></i></a>
                     <?php } ?>
                 </div>
            </div>
@@ -172,10 +180,9 @@ $select_edu = mysqli_query($db_connection, $select);
                                 <p class="wow fadeInUp" data-wow-delay="0.6s"><?=$after_assoc_banner['desp'] ?></p>
                                 <div class="banner-social wow fadeInUp" data-wow-delay="0.8s">
                                     <ul>
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                                        <?php foreach($select_icon as $icon){ ?>
+                                        <li><a href="<?= $icon['link']?>"><i style =font-family:fontawesome class="fab <?= $icon['icon']?> "></i></a></li>
+                                        <?php } ?>
                                     </ul>
                                 </div>
                                 <a href="#" class="btn wow fadeInUp" data-wow-delay="1s">SEE PORTFOLIOS</a>
@@ -183,7 +190,7 @@ $select_edu = mysqli_query($db_connection, $select);
                         </div>
                         <div class="col-xl-5 col-lg-6 d-none d-lg-block">
                             <div class="banner-img text-right">
-                                <img src="upload/benner/<?=$after_assoc_banner_img['banner_image']?>" alt="">
+                                <img width="400px" height="800px" src="upload/benner/<?=$after_assoc_banner_img['banner_image']?>" alt="">
                             </div>
                         </div>
                     </div>
@@ -378,79 +385,22 @@ $select_edu = mysqli_query($db_connection, $select);
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
+                        <?php foreach($select_work as $work){ ?>
                         <div class="col-lg-4 col-md-6 pitem">
                             <div class="speaker-box">
 								<div class="speaker-thumb">
-									<img src="img/images/1.jpg" alt="img">
+									<img src="upload/works/<?= $work['image']?>" alt="img">
 								</div>
 								<div class="speaker-overlay">
-									<span>Design</span>
-									<h4><a href="portfolio-single.html">Hamble Triangle</a></h4>
-									<a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
+									<span><?= $work['category']?></span>
+									<h4><a href=""><?= $work['sub_title']?></a></h4>
+									<a href="portfolio-single.php?id=<?= $work['id']?>" class="arrow-btn">More information <span></span></a>
 								</div>
 							</div>
                         </div>
-                        <div class="col-lg-4 col-md-6 pitem">
-                            <div class="speaker-box">
-								<div class="speaker-thumb">
-									<img src="img/images/2.jpg" alt="img">
-								</div>
-								<div class="speaker-overlay">
-									<span>Video</span>
-									<h4><a href="portfolio-single.html">Dark Beauty</a></h4>
-									<a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
-								</div>
-							</div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 pitem">
-                            <div class="speaker-box">
-								<div class="speaker-thumb">
-									<img src="img/images/3.jpg" alt="img">
-								</div>
-								<div class="speaker-overlay">
-									<span>Audio</span>
-									<h4><a href="portfolio-single.html">Gilroy Limbo.</a></h4>
-									<a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
-								</div>
-							</div>
-                        </div>
-						<div class="col-lg-4 col-md-6 pitem">
-                            <div class="speaker-box">
-								<div class="speaker-thumb">
-									<img src="img/images/4.jpg" alt="img">
-								</div>
-								<div class="speaker-overlay">
-									<span>Design</span>
-									<h4><a href="portfolio-single.html">Ipsum which</a></h4>
-									<a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
-								</div>
-							</div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 pitem">
-                            <div class="speaker-box">
-								<div class="speaker-thumb">
-									<img src="img/images/5.jpg" alt="img">
-								</div>
-								<div class="speaker-overlay">
-									<span>Creative</span>
-									<h4><a href="portfolio-single.html">Eiusmod tempor</a></h4>
-									<a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
-								</div>
-							</div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 pitem">
-                            <div class="speaker-box">
-								<div class="speaker-thumb">
-									<img src="img/images/6.jpg" alt="img">
-								</div>
-								<div class="speaker-overlay">
-									<span>UX/UI</span>
-									<h4><a href="portfolio-single.html">again there</a></h4>
-									<a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
-								</div>
-							</div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </section>
@@ -561,36 +511,15 @@ $select_edu = mysqli_query($db_connection, $select);
             <div class="barnd-area pt-100 pb-100">
                 <div class="container">
                     <div class="row brand-active">
+                        
+                       <?php foreach($select_brand as $brand){ ?>
                         <div class="col-xl-2">
                             <div class="single-brand">
-                                <img src="img/brand/brand_img01.png" alt="img">
+                                <img src="upload/brand/<?= $brand['brand_image']?>" alt="img">
                             </div>
                         </div>
-                        <div class="col-xl-2">
-                            <div class="single-brand">
-                                <img src="img/brand/brand_img02.png" alt="img">
-                            </div>
-                        </div>
-                        <div class="col-xl-2">
-                            <div class="single-brand">
-                                <img src="img/brand/brand_img03.png" alt="img">
-                            </div>
-                        </div>
-                        <div class="col-xl-2">
-                            <div class="single-brand">
-                                <img src="img/brand/brand_img04.png" alt="img">
-                            </div>
-                        </div>
-                        <div class="col-xl-2">
-                            <div class="single-brand">
-                                <img src="img/brand/brand_img05.png" alt="img">
-                            </div>
-                        </div>
-                        <div class="col-xl-2">
-                            <div class="single-brand">
-                                <img src="img/brand/brand_img03.png" alt="img">
-                            </div>
-                        </div>
+                        <?php } ?>
+                        
                     </div>
                 </div>
             </div>
@@ -617,13 +546,21 @@ $select_edu = mysqli_query($db_connection, $select);
                                 </div>
                             </div>
                         </div>
+                                
+
                         <div class="col-lg-6">
+
+                        <?php if(isset($_SESSION['send'])){?>
+
+                            <strong class="text-primary"><?=$_SESSION['send'] ?></strong>   
+                            <?php } unset($_SESSION['send']) ?> 
+
                             <div class="contact-form">
-                                <form action="#">
-                                    <input type="text" placeholder="your name *">
-                                    <input type="email" placeholder="your email *">
+                                <form action="message_post.php" method="POST">
+                                    <input type="text" name="name" placeholder="your name *">
+                                    <input type="email" name="email" placeholder="your email *">
                                     <textarea name="message" id="message" placeholder="your message *"></textarea>
-                                    <button class="btn">BUY TICKET</button>
+                                    <button class="btn">Send</button>
                                 </form>
                             </div>
                         </div>

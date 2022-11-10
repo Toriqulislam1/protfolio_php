@@ -874,6 +874,7 @@
 
 						<ul>
 							<a href="/Brim/education/education.php">education</a>
+							<a href="/Brim/education/introduction.php">introduction</a>
 							
 						</ul>
 						
@@ -889,6 +890,33 @@
 
 						<ul>
 							<a href="/Brim/works/work.php">work</a>
+							
+						</ul>
+						
+
+					</li>
+
+					<li>
+						<a class="has-arrow ai-icon" href="" aria-expanded="false">
+							<i class="flaticon-381-networking"></i>
+							<span class="nav-text">Message</span>
+						</a>
+
+						<ul>
+							<a href="/Brim/message/message.php">Message</a>
+							
+						</ul>
+						
+
+					</li>
+					<li>
+						<a class="has-arrow ai-icon" href="" aria-expanded="false">
+							<i class="flaticon-381-networking"></i>
+							<span class="nav-text">Brand</span>
+						</a>
+
+						<ul>
+							<a href="/Brim/brand/brand.php">brand</a>
 							
 						</ul>
 						
@@ -915,19 +943,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 		<!--**********************************
             Sidebar end
         ***********************************-->
@@ -936,13 +951,12 @@
             Content body start
         ***********************************-->
 		<div class="content-body">
-			<row -->
+			
 				<div class="container-fluid">
 
 
 
-					<div class="col-xl-6 col-xxl-12">
-						<div class="row">
+					
 
 
 
@@ -950,10 +964,9 @@
 
 
 
-						</div>
-					</div>
-				</div>
-		</div>
+					
+				
+	
 
 
 

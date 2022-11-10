@@ -36,9 +36,15 @@
                                     <button type="button" class="btn btn-success light sharp" data-toggle="dropdown">
                                         <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
                                     </button>
-                                    <div class="dropdown-menu">
-                                        <button data-link="delete_edu.php?id=<?=$edu['id']?>" class="dropdown-item delete_btn" href="">Delete</button>
-                                    </div>
+
+                                    <a href="delete_edu.php?id=<?=$edu['id']?>"
+
+
+
+
+                                    <!-- <div class="dropdown-menu">
+                                        <button type="submit" data-link="delete_edu.php?id=<?=$edu['id']?>" class="dropdown-item delete_btn" href="">Delete</button>
+                                    </div> -->
                                 </div>
                             </td>
                         </tr>
@@ -77,31 +83,5 @@
 <?php 
     require '../deshboardPart/footer.php';
 ?>
-<script>
-    $('.delete_btn').click(function(){
-        Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-        if (result.isConfirmed) {
-            var link = $(this).attr('data-link');
-            window.location.href = link;
-        }
-        })
-    })
-</script>
 
-<?php if(isset($_SESSION['delete'])){ ?>
-    <script>
-        Swal.fire(
-            'Deleted!',
-            '<?=$_SESSION['delete']?>',
-            'success'
-            )
-    </script>
-<?php } unset($_SESSION['delete'])?>
+

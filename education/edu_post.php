@@ -1,4 +1,5 @@
 <?php 
+
 require '../db.php';
 
 $title = $_POST['title'];

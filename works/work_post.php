@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 require '../db.php';
 
 $category = $_POST['category'];
@@ -7,7 +7,13 @@ $sub_title = $_POST['sub_title'];
 $title = $_POST['title'];
 $desp = $_POST['desp'];
 $after_excape = mysqli_real_escape_string($db_connection, $desp);
-$id = $_SESSION['id'];
+
+// user id 
+$user_select = "SELECT * FROM users";
+$select_res = mysqli_query($db_connection,$user_select);
+$after_assoc = mysqli_fetch_assoc($select_res);
+$id = $after_assoc['id'];
+// user find id end 
 
 $uploaded_file = $_FILES['image'];
 $after_explode = explode('.', $uploaded_file['name']);
