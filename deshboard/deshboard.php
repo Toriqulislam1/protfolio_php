@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../deshboardPart/header.php';
 ?>
 
@@ -10,8 +11,8 @@ require '../deshboardPart/header.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body style="margin-left: 20px ;">
-    <span class="card"></span>
+<body">
+    <span class="card"> welcome to dashboard</span>
 </body>
 </html>
 

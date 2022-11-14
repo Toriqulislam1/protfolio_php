@@ -1,3 +1,27 @@
+<?php
+session_start();
+	
+	require'../db.php';
+
+
+	
+		
+	$id = $_SESSION['id'];
+
+	echo $id;
+
+	$user = "SELECT * FROM users WHERE id=$id";
+	$user_result = mysqli_query($db_connection, $user);
+
+	$after_assoc_user = mysqli_fetch_assoc($user_result);
+
+	
+			
+
+// ?>
+
+		
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,8 +59,12 @@
         Main wrapper start
     ***********************************-->
 	<div id="main-wrapper">
-
-		<!--**********************************
+	
+		
+	
+	
+	
+	<!--**********************************
             Nav header start
         ***********************************-->
 		<div class="nav-header">
@@ -783,14 +811,14 @@
 							</li>
 							<li class="nav-item dropdown header-profile">
 								<a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
-									<img src="images/profile/17.jpg" width="20" alt="" />
+									<img src="/Brim/upload/user/<?=$after_assoc_user['image']?>" width="20" alt="" />
 									<div class="header-info">
-										<span class="text-black"><strong>Peter Parkur</strong></span>
+										<span class="text-black"><strong><?=$after_assoc_user['name']?></strong></span>
 										<p class="fs-12 mb-0">Super Admin</p>
 									</div>
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
-									<a href="./app-profile.html" class="dropdown-item ai-icon">
+									<a href="/Brim/user/profile.php" class="dropdown-item ai-icon">
 										<svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 											<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
 											<circle cx="12" cy="7" r="4"></circle>
@@ -804,7 +832,7 @@
 										</svg>
 										<span class="ml-2">Inbox </span>
 									</a>
-									<a href="./page-login.html" class="dropdown-item ai-icon">
+									<a href="../logout.php" class="dropdown-item ai-icon">
 										<svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 											<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
 											<polyline points="16 17 21 12 16 7"></polyline>
@@ -836,7 +864,7 @@
 						</a>
 
 						<ul>
-							<a href="#">userList</a>
+							<a href="/Brim/user/users.php">userList</a>
 						</ul>
 
 					</li>
@@ -922,6 +950,20 @@
 						
 
 					</li>
+
+					<!-- <li>
+						<a class="has-arrow ai-icon" href="" aria-expanded="false">
+							<i class="flaticon-381-networking"></i>
+							<span class="nav-text">User</span>
+						</a>
+
+						<ul>
+							<a href="/Brim/brand/brand.php">brand</a>
+							
+						</ul>
+						
+
+					</li> -->
 
 
 
